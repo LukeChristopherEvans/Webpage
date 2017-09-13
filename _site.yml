@@ -1,0 +1,10 @@
+
+name: "Lukes-website"
+output_dir: "."
+navbar:
+  title: "Luke Christopher Evans"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About Me"
+      href: about.html
