@@ -1,5 +1,10 @@
 ---
 title: "  Luke Christopher Evans"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+
 ---
 
 Hello, World!
