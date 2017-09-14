@@ -6,9 +6,13 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+      icon: fa-home
     - text: "About Me"
       href: about.html
+      icon: fa-address-card
     - text: "Blog"
       href: Blog.html
+      icon: fa-book
+    
       
     
