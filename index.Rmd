@@ -1,6 +1,9 @@
 ---
 title: "  Luke Christopher Evans"
-
+output:
+  html_document:
+    theme: flatly
+    highlight: espresso
 ---
 
 Hello, World!
