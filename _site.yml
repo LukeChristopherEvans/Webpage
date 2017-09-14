@@ -9,10 +9,22 @@ navbar:
       icon: fa-home
     - text: "About Me"
       href: about.html
-      icon: fa-address-card
+      icon: fa-male
     - text: "Blog"
       href: Blog.html
       icon: fa-book
+    - text: "pieR^2"
+      href: research.html
+      icon: fa-pie-chart
+    - text: "Connect"
+      icon: fa-hashtag
+      menu:
+         - icon: fa-twitter
+           href: https://twitter.com/Evans_L_C
+         - icon: fa-instagram
+           href: https://www.instagram.com/lukechristopherevans/?hl=en
+         - icon: fa-wordpress
+           href: https://ibmreading.wordpress.com/
     
       
     

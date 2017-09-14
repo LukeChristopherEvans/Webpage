@@ -6,4 +6,24 @@ output:
     highlight: espresso
 ---
 
-Butterflies etc.
+<br/>
+<img src="images/luke3.jpg" width="170px">
+
+<br/>
+
+# Bio
+I am a PhD student at the University of Reading who is interested in complex systems, agent-based modelling, and generally making ecology more predictive.
+
+I have set up this website primarly to share code from the R Club and also to spread my bad ideas further and wider than ever before.
+
+<br/>
+
+# Research interests 
+* Butterflies
+* Agent-based modelling
+* R programming
+* NetLogo
+* Movement ecology
+* Computational ecology 
+
+For more information on research <a href =https://ibmreading.wordpress.com/butterflies/ > click here <a>
