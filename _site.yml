@@ -8,5 +8,7 @@ navbar:
       href: index.html
     - text: "About Me"
       href: about.html
+    - text: "Blog"
+      href: Blog.html
       
     
