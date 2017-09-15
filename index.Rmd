@@ -1,14 +1,21 @@
 ---
-title: "  Luke Christopher Evans"
+title: A<font size="5">lways</font> B<font size="5">e</font> M<font size="5">odelling</font>
 output:
   html_document:
     theme: flatly
     highlight: espresso
 ---
 
-Hello, World!
+
+<br/>
 
 ```{r}
-print("hello I am Luke")
+print("Hello welcome to the website")
 ```
+<br/>
+
+# LATEST BLOG POSTS
+
+
+
 

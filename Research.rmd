@@ -7,5 +7,20 @@ output:
 ---
 
 <br/>  
-# Our R club 
+
+# OUR R CLUB 
+
+PieR^2 is a R club aimed at getting University of Reading students and staff into using R for their projects. We meet every month to share experiences, code, and to troubleshoot those pesky R problems. 
+
+Summaries of the code and content used in these meetings will be posted to this website through RMarkdown and we also hope to post R blogs from ecologists using R in their research.
+
+<br/>
+
+# THE NAME
+
+The name (*pie . R . ^2*) represents 3 key aspects of the club:
+
+* pie -  We eat pies 
+* R   -  We do R programming
+* ^2  -  It makes the same sound good
 
