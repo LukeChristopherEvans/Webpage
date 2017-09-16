@@ -25,3 +25,18 @@ The name pie$R^{2}$ represents 3 key aspects of the club:
 * R   -  We do R programming
 * $^{2}$  -  It makes the same sound good
 
+
+<br/>
+
+##LATEST pie$R^{2}$ POSTS 
+
+<br/>
+
+<article>
+<h3><a href="getting-started-with-r.html">GETTING STARTED WITH R</a></h3>
+<div class="summary">
+<span><i class="fa fa-calendar"></i> _2017-09-15_</span>
+<p> Summary text </p>
+<a class="btn btn-outline-primary btn-sm" href="blog-the-move-to-r.html">Full Post</a>
+</div>
+</article>

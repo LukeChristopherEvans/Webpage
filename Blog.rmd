@@ -6,7 +6,15 @@ output:
     highlight: espresso
       
 ---
+
+
+<img src="images/butterflybanner.png" width="700px">
+
 <br/>
+
+##POSTS 
+<br/>
+
 <article>
 <h3><a href="getting-started-with-r.html">GETTING STARTED WITH R</a></h3>
 <div class="summary">

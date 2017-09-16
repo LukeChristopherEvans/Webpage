@@ -36,7 +36,9 @@ ui <- fluidPage(
      
        sliderInput("predator", "Predators:",
                   min = 0, max = 100,
-                  value =25)
+                  value =25, ),
+      height = 300
+      
       
 
      ), 
@@ -44,7 +46,7 @@ ui <- fluidPage(
     mainPanel(
       
       # Output: Table summarizing the values entered ----
-       plotOutput(outputId = "main_plot", height = 700)
+       plotOutput(outputId = "main_plot", height = 300)
       # Output: Table summarizing the values entered ----
      # tableOutput("values")
       
