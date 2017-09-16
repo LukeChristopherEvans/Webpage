@@ -14,7 +14,7 @@ output:
 ##BIO
 I am a PhD student at the University of Reading who is interested in complex systems, agent-based modelling, and generally making ecology more predictive.
 
-I have set up this website primarly to share code from the R Club and also to spread my bad ideas further and wider than ever before.
+I have set up this website primarly to share code from <a href="research.html">pie$R^{2}$</a> and also to spread my bad ideas further and wider than ever before.
 
 <br/>
 
