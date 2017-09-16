@@ -1,13 +1,19 @@
 ---
-title: "Blog"
+title: "BLOG"
 output:
   html_document:
     theme: flatly
     highlight: espresso
       
 ---
-
-
- <a href="gettingstarted.html">Getting started</a>
+<br/>
+<article>
+<h3><a href="getting-started-with-r.html">GETTING STARTED WITH R</a></h3>
+<div class="summary">
+<span><i class="fa fa-calendar"></i> _2017-09-15_</span>
+<p> Summary text </p>
+<a class="btn btn-outline-primary btn-sm" href="getting-started-with-r.html">Full Post</a>
+</div>
+</article>
  
- 
+<br/>

@@ -1,21 +1,41 @@
 ---
-title: A<font size="5">lways</font> B<font size="5">e</font> M<font size="5">odelling</font>
+title: A<font size="5">LWAYS</font> B<font size="5">E</font> M<font size="5">ODELLING</font>
 output:
   html_document:
     theme: flatly
     highlight: espresso
 ---
 
-
 <br/>
-
 ```{r}
 print("Hello welcome to the website")
 ```
+
+<br/>
+<iframe src ="https://lcebutterfly.shinyapps.io/loktavolterra/" width=1000 height=700>
+
+</iframe>
+
+
+
 <br/>
 
-# LATEST BLOG POSTS
+##LATEST pie$R^{2}$ POSTS 
+<br/>
+
+<article>
+<h3><a href="getting-started-with-r.html">GETTING STARTED WITH R</a></h3>
+<div class="summary">
+<span><i class="fa fa-calendar"></i> _2017-09-15_</span>
+<p> Summary text </p>
+<a class="btn btn-outline-primary btn-sm" href="blog-the-move-to-r.html">Full Post</a>
+</div>
+</article>
 
 
 
+
+<br/>
+
+## BLOG POSTS
 

@@ -13,7 +13,7 @@ navbar:
     - text: "Blog"
       href: Blog.html
       icon: fa-book
-    - text: "pieR^2"
+    - text: pieR^2
       href: research.html
       icon: fa-pie-chart
     - text: "Connect"

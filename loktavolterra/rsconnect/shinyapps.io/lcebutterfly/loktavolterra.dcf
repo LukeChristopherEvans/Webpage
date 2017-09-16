@@ -1,0 +1,12 @@
+name: loktavolterra
+title: loktavolterra
+username:
+account: lcebutterfly
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 215303
+bundleId: 984382
+url: https://lcebutterfly.shinyapps.io/loktavolterra/
+when: 1505555290.4302
+asMultiple: FALSE
+asStatic: FALSE
