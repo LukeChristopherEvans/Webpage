@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Getting started with R</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Luke Christopher Evans</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-male"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="Blog.html">
+    <span class="fa fa-book"></span>
+     
+    Blog
+  </a>
+</li>
+<li>
+  <a href="research.html">
+    <span class="fa fa-pie-chart"></span>
+     
+    pieR^2
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-hashtag"></span>
+     
+    Connect
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://twitter.com/Evans_L_C">
+        <span class="fa fa-twitter"></span>
+         
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/lukechristopherevans/?hl=en">
+        <span class="fa fa-instagram"></span>
+         
+      </a>
+    </li>
+    <li>
+      <a href="https://ibmreading.wordpress.com/">
+        <span class="fa fa-wordpress"></span>
+         
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Getting started with R</h1>
+
+</div>
+
+
+<p><br/></p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p><br/></p>
+<p>The first thing to note when writing an article titled <em>‘Getting started with R’</em> is the abundance of webpages, books and video tutorials already produced, to a very high standard, which provide the relevant details for getting R working on your computer and learning the basics. As I doubt that I could improve upon their efforts, repeating these steps would be pointless exercise for me and the reader, and so I won’t bother.</p>
+<p>This may sound quite defeatist, but in actuality it represents a productive ethos when it comes to computer programming; <em>don’t work harder than you need to</em>. Googling a code problem is much faster than banging your head against a software wall and borrowing a solution is faster than building one.</p>
+<p>This article, then, will have a different focus; initially I cover why I think you should use R. This is far from a unique topic, however it is one for which I can at least offer my own opinion. In the next section I provide links to useful resources online along with some comment on the utility of the types of different R guides available. Then finally, I finish with some basic rules to follow as you begin to learn R programming.</p>
+<p><br/></p>
+</div>
+<div id="why-use-r" class="section level2">
+<h2>Why use R?</h2>
+<p><br/></p>
+<p>If you read Methods in Ecology an Evolution it won’t have escaped your notice that every issue has an article roughly titled <strong>‘…R a package for…’</strong> <em>(you can creatively fill in the blanks)</em>. What does this mean? It means that the authors of the article have developed a set of functions that are available to download through R and which provide an easy way to complete the analysis they have just undertaken. A function being simply a block of code that takes an input (data) and provides an output (graphics, analysis etc.). With this, an extremely fast route to analysis that may have taken weeks and hundreds of lines of code to implement is provided. All that is required from the user is to read the basic instructions for using the functions.</p>
+<p>This is the main strength of R. You can take advantage of the efforts and time of other R users and produce cutting edge analysis with relatively little effort and no cost. I could do some machine learning this afternoon and do a PCA tomorrow morning. This pool of packages is also constantly expanding, providing the R user with an ever greater box of tricks. I need only prompt the reader to ponder the comparison of this flexibility with their experience using proprietary software.</p>
+<p>To take advantage of this opportunity though does require a familiarity with the basics of R such that you can understand the functions and use them appropriately. Similarly, it will take some time and effort to get used to reading documentation and asking the right questions from google <em>(more difficult than you might initially imagine)</em>. Hopefully though I have provided sufficient reason for this to be a worthwhile effort for the reader <em>(which it most definitely is)</em> and so we shall begin the process of getting R onto your computer and beginning to learn the basics.</p>
+<p><br/></p>
+</div>
+<div id="getting-started-with-r" class="section level2">
+<h2>Getting started with R</h2>
+<p><br/></p>
+<p>As I mentioned there are many useful guides already available and ultimately it’s of personal preference as to which is most useful. I will however share my experiences with each of the resources. I find books aren’t totally necessary but may be helpful early on if one wants to get a better understanding of how R works, an overview of the operations, and advice on how to use R in an efficient way. Videos are initially very helpful but can grow tiresome as the difficulty of the material and the pace with which it is presented are not easily controlled by the viewer. Articles are necessarily limited in scope which is advantageous for focussing on learning a particular new operation but reliance on them can make it difficult for the reader to gain an overview of the language. A combination of these resources and most importantly practice will help the reader quickly develop their skills.</p>
+<p>I would also like to put forward my preference for using RStudio, which is an attractive development environment for using R. This on the whole makes it easier to get started with R and also has features which make coding simpler and faster. Also, download the correct bit version for your machine, it is not initially very important but it can produce some issues later with more advanced programming.</p>
+<p>With these tips in mind follow the below links and get going:</p>
+<div id="websites" class="section level4">
+<h4>Websites</h4>
+<ul>
+<li>Download <a href="https://cran.r-project.org/">R</a>, <a href="https://www.rstudio.com/products/rstudio/">RStudio</a></li>
+<li><a href="https://support.rstudio.com/hc/en-us/articles/201141096-Getting-Started-with-R"> R studio start guide </a><br />
+</li>
+<li>Computer world’s <a href "https://www.computerworld.com/article/2497143/business-intelligence/business-intelligence-beginner-s-guide-to-r-introduction.html?page=2"> start guide </a></li>
+<li>Computer world’s <a href "https://www.computerworld.com/article/2497464/business-intelligence/business-intelligence-60-r-resources-to-improve-your-data-skills.html"> list of R resources<a/></li>
+</ul>
+</div>
+<div id="youtube" class="section level4">
+<h4>Youtube</h4>
+<ul>
+<li><a href "https://www.youtube.com/watch?v=cX532N_XLIs"> Video 1</a></li>
+<li><a href "https://www.youtube.com/watch?v=ZoPJGmpYJzw"> Video 2</a></li>
+<li><a href "https://www.youtube.com/watch?v=MFfRQuQKGYg"> Video 3</a></li>
+</ul>
+</div>
+<div id="books" class="section level4">
+<h4>Books</h4>
+<ul>
+<li><a href "https://cran.r-project.org/doc/manuals/R-intro.pdf">Introduction to R (free)</a></li>
+<li><a href "https://www.amazon.com/Getting-Started-R-Introduction-Biologists/dp/0198787847/ref=sr_1_1?ie=UTF8&qid=1505662233&sr=8-1&keywords=getting+started+with+r">Getting started with R </a></li>
+<li><a href "https://www.amazon.com/R-Dummies-Andrie-Vries/dp/1119055806/ref=sr_1_1?s=books&ie=UTF8&qid=1505662266&sr=1-1&keywords=r+for+dummies">R for Dummies</a></li>
+</ul>
+<p><br/></p>
+</div>
+</div>
+<div id="rules-for-r" class="section level2">
+<h2>Rules for R</h2>
+<p><br/> By this point you should have R and RStudio up and running on your machine and you are no doubt itching to learn some coding. Before you are let loose though I two rules which I think are worth discussing. I have called them rules as on first reading they have the character of friendly advice but experience will show them to be a necessity.</p>
+<p><strong>Only write scripts</strong>. Do not type into the console even when learning the basics. What was learnt will quickly be forgotten and you will find yourself having relook up code you had ran moments earlier. If it is in the script you need only glance up to refresh the memory. Scripts can be saved, recalled, edited, and sent to colleagues; by comparison what goes into the console is gone after you exit that R session.</p>
+<p><strong>Comment scripts</strong>. Hashtags can be used to insert comments into the code. Commentary will make what the code does intelligible to others and to the future versions of yourself who will work on it. It is remarkable how difficult it can be to understand code you have previously written and considerable amounts of time can be wasted working out how it works and what it does. Uncommented code sent to any self-respecting colleague will likely be sent straight back. Life is too short.</p>
+<p><br/></p>
+</div>
+<div id="get-coding" class="section level2">
+<h2>Get coding</h2>
+<p><br/></p>
+<p>All that is left now is to start learning the basics using the guides provided. Although these basics are far from thrilling, gaining a good basic understanding forms the necessary platform for all the exciting intermediate and advanced R work that lays in your future. <strong>Good luck and be patient, it’s worth it</strong>.</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

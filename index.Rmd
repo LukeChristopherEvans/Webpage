@@ -31,11 +31,14 @@ The above interactive plot of the classic <a href="https://en.wikipedia.org/wiki
 <br/>
 
 <article>
-<h3><a href="getting-started-with-r.html">GETTING STARTED WITH R</a></h3>
+<h3><a href="getting-started-with-R.html">GETTING STARTED WITH R</a></h3>
 <div class="summary">
-<span><i class="fa fa-calendar"></i> _2017-09-15_</span>
-<p> Summary text </p>
-<a class="btn btn-outline-primary btn-sm" href="blog-the-move-to-r.html">Full Post</a>
+<span><i class="fa fa-calendar"></i> _2017-09-17_</span>
+<p> 
+##Introduction
+
+The first thing to note when writing an article titled *'Getting started with R'* is the abundance of webpages, books and video tutorials already produced, to a very high standard, which provide the relevant details for getting R working on your computer... </p>
+<a href="getting-started-with-R.html">Full Post</a>
 </div>
 </article>
 
