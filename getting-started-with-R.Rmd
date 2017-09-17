@@ -29,7 +29,7 @@ If you read Methods in Ecology an Evolution it won't have escaped your notice th
 
 This is the main strength of R. You can take advantage of the efforts and time of other R users and produce cutting edge analysis with relatively little effort and no cost. I could do some machine learning this afternoon and do a PCA tomorrow morning. This pool of packages is also constantly expanding, providing the R user with an ever greater box of tricks. I need only prompt the reader to ponder the comparison of this flexibility with their experience using proprietary software.  
 
-To take advantage of this opportunity though does require a familiarity with the basics of R such that you can understand the functions and use them appropriately. Similarly, it will take some time and effort to get used to reading documentation and asking the right questions from google *(more difficult than you might initially imagine)*. Hopefully though I have provided sufficient reason for this to be a worthwhile effort for the reader *(which it most definitely is)* and so we shall begin the process of getting R onto your computer and beginning to learn the basics.
+To take advantage of this opportunity though does require a familiarity with the basics of R such that you can understand the functions and use them appropriately. Similarly, it will take some time and effort to get used to reading documentation and asking the right questions from Google *(more difficult than you might initially imagine)*. Hopefully though I have provided sufficient reason for this to be a worthwhile effort for the reader *(which it most definitely is)* and so we shall begin the process of getting R onto your computer and learning the basics.
 
 <br/>
 
@@ -39,7 +39,7 @@ To take advantage of this opportunity though does require a familiarity with the
 
 As I mentioned there are many useful guides already available and ultimately it's of personal preference as to which is most useful. I will however share my experiences with each of the resources. I find books aren't totally necessary but may be helpful early on if one wants to get a better understanding of how R works, an overview of the operations, and advice on how to use R in an efficient way. Videos are initially very helpful but can grow tiresome as the difficulty of the material and the pace with which it is presented are not easily controlled by the viewer. Articles are necessarily limited in scope which is advantageous for focussing on learning a particular new operation but reliance on them can make it difficult for the reader to gain an overview of the language. A combination of these resources and most importantly practice will help the reader quickly develop their skills. 
 
-I would also like to put forward my preference for using RStudio, which is an attractive development environment for using R. This on the whole makes it easier to get started with R and also has features which make coding simpler and faster. Also, download the correct bit version for your machine, it is not initially very important but it can produce some issues later with more advanced programming. 
+I would also like to put forward my preference for using RStudio, which is an attractive development environment for using R. This on the whole makes it easier to get started with R and also has features which make coding simpler and faster. Also, ensure you download the correct bit version for your machine, it is not initially very important but it can produce some issues later with more advanced programming. 
 
 With these tips in mind follow the below links and get going:
 
@@ -67,9 +67,9 @@ With these tips in mind follow the below links and get going:
 
 
 <br/>
-By this point you should have R and RStudio up and running on your machine and you are no doubt itching to learn some coding. Before you are let loose though I two rules which I think are worth discussing. I have called them rules as on first reading they have the character of friendly advice but experience will show them to be a necessity.
+By this point you should have R and RStudio up and running on your machine and you are no doubt itching to learn some coding. Before you are let loose though; two rules which I think are worth discussing. I have called them rules, as on first reading they have the character of friendly advice but experience will show them to be a necessity.
 
-**Only write scripts**. Do not type into the console even when learning the basics. What was learnt will quickly be forgotten and you will find yourself having relook up code you had ran moments earlier. If it is in the script you need only glance up to refresh the memory. Scripts can be saved, recalled, edited, and sent to colleagues; by comparison what goes into the console is gone after you exit that R session.
+**Only write scripts**. Do not type into the console even when learning the basics. What was learnt will quickly be forgotten and you will find yourself having to re-look up code you had run moments earlier. If it is in the script you need only glance up to refresh the memory. Scripts can be saved, recalled, edited, and sent to colleagues; by comparison what goes into the console is gone after you exit that R session.
 
 **Comment scripts**. Hashtags can be used to insert comments into the code. Commentary will make what the code does intelligible to others and to the future versions of yourself who will work on it. It is remarkable how difficult it can be to understand code you have previously written and considerable amounts of time can be wasted working out how it works and what it does. Uncommented code sent to any self-respecting colleague will likely be sent straight back. Life is too short.
 
@@ -79,4 +79,4 @@ By this point you should have R and RStudio up and running on your machine and y
 
 <br/>
 
-All that is left now is to start learning the basics using the guides provided. Although these basics are far from thrilling, gaining a good basic understanding forms the necessary platform for all the exciting intermediate and advanced R work that lays in your future. **Good luck and be patient, it's worth it**.
+All that is left now is to start learning using the guides provided. Although these basics are far from thrilling, gaining a good understanding of them forms the necessary platform for all the exciting intermediate and advanced R work that lays in your future. **Good luck and be patient, it's worth it**.
