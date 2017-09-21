@@ -46,14 +46,14 @@ With these tips in mind follow the below links and get going:
 ####Websites 
 *	Download <a href="https://cran.r-project.org/">R</a>, <a href="https://www.rstudio.com/products/rstudio/">RStudio</a>
 *	<a href="https://support.rstudio.com/hc/en-us/articles/201141096-Getting-Started-with-R"> R studio start guide </a>  
-* Computer world's	<a href "https://www.computerworld.com/article/2497143/business-intelligence/business-intelligence-beginner-s-guide-to-r-introduction.html?page=2">  start guide </a> 
-* Computer world's <a href "https://www.computerworld.com/article/2497464/business-intelligence/business-intelligence-60-r-resources-to-improve-your-data-skills.html">  list of R resources<a/>
+* Computer world's	<a href= "https://www.computerworld.com/article/2497143/business-intelligence/business-intelligence-beginner-s-guide-to-r-introduction.html?page=2">  start guide </a> 
+* Computer world's <a href= "https://www.computerworld.com/article/2497464/business-intelligence/business-intelligence-60-r-resources-to-improve-your-data-skills.html">  list of R resources<a/>
 
 
 ####Youtube
-*	<a href "https://www.youtube.com/watch?v=cX532N_XLIs"> Video 1</a>
-*	<a href "https://www.youtube.com/watch?v=ZoPJGmpYJzw"> Video 2</a> 
-*	<a href "https://www.youtube.com/watch?v=MFfRQuQKGYg"> Video 3</a> 
+*	<a href= "https://www.youtube.com/watch?v=cX532N_XLIs"> Video 1</a>
+*	<a href= "https://www.youtube.com/watch?v=ZoPJGmpYJzw"> Video 2</a> 
+*	<a href= "https://www.youtube.com/watch?v=MFfRQuQKGYg"> Video 3</a> 
 
 ####Books
 *	<a href="https://cran.r-project.org/doc/manuals/R-intro.pdf">Introduction to R (free)</a>
