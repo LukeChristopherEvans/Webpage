@@ -6,7 +6,12 @@ output:
    highlight: espresso
 ---
 
-<br/>  
+<br/>
+
+
+<img src="images/computers.png" width="1000px">
+
+<br/>
 
 ##OUR R CLUB 
 
