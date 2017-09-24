@@ -33,6 +33,20 @@ The name pie$R^{2}$ represents 3 key aspects of the club:
 <br/>
 
 <article>
+<h3><a href="getting-data-into-R.html">GETTING DATA INTO R</a></h3>
+<div class="summary">
+<span><i class="fa fa-calendar"></i> _2017-09-24_</span>
+<p> 
+##Introduction
+
+Successfully getting your dataset into R is like whistling; once you know how it's hard to imagine finding it difficult, yet presumably at some point it was. It's not my intention to trivialise any possible frustration... </p>
+<a href="getting-data-into-R.html">Full Post</a>
+</div>
+</article>
+
+<br/>
+
+<article>
 <h3><a href="getting-started-with-R.html">GETTING STARTED WITH R</a></h3>
 <div class="summary">
 <span><i class="fa fa-calendar"></i> _2017-09-17_</span>

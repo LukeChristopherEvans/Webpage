@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Getting data into R</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #2a211c; color: #bdae9d; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #2a211c; color: #bdae9d; border-right: 1px solid #bdae9d; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #bdae9d; background-color: #2a211c; }
+code > span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
+code > span.dt { text-decoration: underline; } /* DataType */
+code > span.dv { color: #44aa43; } /* DecVal */
+code > span.bn { color: #44aa43; } /* BaseN */
+code > span.fl { color: #44aa43; } /* Float */
+code > span.ch { color: #049b0a; } /* Char */
+code > span.st { color: #049b0a; } /* String */
+code > span.co { color: #0066ff; font-style: italic; } /* Comment */
+code > span.al { color: #ffff00; } /* Alert */
+code > span.fu { color: #ff9358; font-weight: bold; } /* Function */
+code > span.er { color: #ffff00; font-weight: bold; } /* Error */
+code > span.wa { color: #ffff00; font-weight: bold; } /* Warning */
+code > span.cn { } /* Constant */
+code > span.sc { color: #049b0a; } /* SpecialChar */
+code > span.vs { color: #049b0a; } /* VerbatimString */
+code > span.ss { color: #049b0a; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #0066ff; font-style: italic; } /* Documentation */
+code > span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
+code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Luke Christopher Evans</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-male"></span>
+     
+    About Me
+  </a>
+</li>
+<li>
+  <a href="Blog.html">
+    <span class="fa fa-book"></span>
+     
+    Blog
+  </a>
+</li>
+<li>
+  <a href="research.html">
+    <span class="fa fa-pie-chart"></span>
+     
+    pieR^2
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-hashtag"></span>
+     
+    Connect
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://twitter.com/Evans_L_C">
+        <span class="fa fa-twitter"></span>
+         
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/lukechristopherevans/?hl=en">
+        <span class="fa fa-instagram"></span>
+         
+      </a>
+    </li>
+    <li>
+      <a href="https://ibmreading.wordpress.com/">
+        <span class="fa fa-wordpress"></span>
+         
+      </a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Getting data into R</h1>
+
+</div>
+
+
+<p><br/></p>
+<p><img src="images/despair.png" width="1000px"></p>
+<p><br/></p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p><br/></p>
+<p>Successfully getting your dataset into R is like whistling; once you know how, it’s hard to imagine finding it difficult, yet presumably at some point it was. It’s not my intention to trivialise any possible frustration of the new R user with this analogy, in fact this step seems to be a real hurdle to starting to use R. Rather, I would just like to emphasize that once this first step is overcome it is unlikely to be an issue in the future; so tolerate the brief amount of pain ahead and then we can start doing the interesting stuff.</p>
+<p>This article covers the important processes to get right when getting data in R and then a number of options for developing your own personal data entry scheme. Please note I am purposely avoiding providing the full coverage of all the data types and their associated input methods, I believe this confusion is best avoided at this stage. Instead I hope to provide a bullet-proof, if less than optimal, method for <strong>definitely getting it working</strong>. Hopefully after following this article your data will be sat in R and you will have a reliable method for repeating this process in the future.</p>
+<p><br/></p>
+</div>
+<div id="data-preparation" class="section level2">
+<h2>Data preparation</h2>
+<p><br/></p>
+<p>It is usual to have data ready in Excel, or another spreadsheet application, so this will be the starting point. If you have a dataset that cannot be placed into either a spreadsheet or a text file <em>(i.e. direct from a database)</em> then abandon this tutorial and <a href= "https://www.datacamp.com/community/tutorials/r-data-import-tutorial#gs.mPSeGAc">use this one</a>. Presuming you have your data ready in excel, the first stage is to clean up the data to remove any elements that R won’t like. We’ll work from the top down.</p>
+<p><strong>Headers.</strong> Remove all spaces between your column headings and replace with either a <strong>period</strong> or <strong>underscore</strong> . R does in fact normally do this automatically, but it can cause issues so it’s prudent to rule it out straight away. This process also provides the opportunity to think about your heading names. I would advise names on the shorter side as, while completing your analysis, you may have to type heading names repeatedly and a long name can quickly grow tiresome; it also has a tendency to make the code look messy. Do not however shorten the names at the risk of forgetting what the heading refers to <em>(this can happen)</em>. Finally, remove any symbols: brackets, question marks etc.</p>
+<p><strong>Blank spaces.</strong> It is also necessary to fill blank spaces in the dataset with “NA”. If the dataset is not large then doing this manually is probably easiest and is also an opportunity to scan the dataset for other potential problem elements, like misplaced symbols or forgotten lines of text, which should be removed. If it is a large dataset then using a select and replace tool might be best; I’ll leave that to the reader to investigate. The NAs ensure that the columns are read-in as equal in length, so any blank spaces at the bottom of columns must be filled with NAs up to the length of the longest column.</p>
+<p>These changes should resolve just about all the potential issues in the data and so we can move on to creating and saving the correct file type.</p>
+<p><br/></p>
+</div>
+<div id="file-type" class="section level2">
+<h2>File type</h2>
+<p><br/> We will focus on only two file types, <em>csv</em> and <em>txt</em>. I am also going to proceed with a Windows/Excel bias, though the method is going to be just about the same on any OS. We’ll start with the appropriately named Comma-separated value (<em>csv</em>) files, which is a file type where, unsurprisingly, the values in the data are separated by commas. You need to save your excel file, which will have the extension <em>.xls</em> or <em>.xlsx</em>, into a version that has the extension <em>.csv</em>. To do this just go to save as and pick <em>csv</em> in the ‘save as type’ box which, when saved, will make a new <em>csv</em> version of your file. This file will not look any different in the excel workbook but if opened in a text editor would show the values separated by commas.</p>
+<p>The second route is to use the <em>.txt</em> extension, here follow the same procedure as previously described but instead pick text as the extension <em>(my computer says: ‘text (tab delimited)’)</em>. Once you’ve saved this, you will have a text file version that if opened in a text editor would show the data separated by spaces/tabs. Having generated either one of these files bifurcates the remainder of this article, as the functions you use in the next section are selected based on the file type you just created.</p>
+<p><br/></p>
+</div>
+<div id="r-rstudio" class="section level2">
+<h2>R &amp; RStudio</h2>
+<p><br/></p>
+<p>Next we can move the data into R. I’m going to show you 3 ways of doing this if you have RStudio and 2 ways if you’re just in R.</p>
+<p><strong>1)</strong> The first RStudio exclusive method is to use the <em>‘import Dataset’</em> button. I have a slight aversion to buttons due to painful memories of time spent searching through menus and sub-menus in complicated software to locate the desired function; but this is a useful feature when you get started. You simply click on it, pick your file type, and then you are provided with a menu where you have options to select the delimiter <em>(which is what separated the values as explained in the previous section)</em> and then input a name for the data. This button is simply a GUI for a small amount of code which loads a package and runs a function, which you can see in the <em>Code preview</em> box in the menu.</p>
+<p></br></p>
+<p><img src="images/importmenus.png" width="900px"></p>
+<p></br></p>
+<p><strong>2)</strong> I would call this method the ‘R way’. Here you write out, and use, the function for yourself; which I think is worth doing over option 1 for a number of reasons. Firstly, once the script file is saved loading the data will be faster the next time. Secondly, you are going to use functions constantly the entire time you are on R so you cannot be uncomfortable with them. Finally, although RStudio’s GUI provides lots of options it will never be as flexible as using code. This flexibility is the one of the most important advantages of using R and should be embraced.</p>
+<p><br/></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For the CSV file </span>
+Dataset &lt;-<span class="st">  </span><span class="kw">read.csv</span>( <span class="dt">file=</span> <span class="st">&quot;C:/Luke/Data/Dataset.csv&quot;</span>, <span class="dt">headers =</span> <span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span> )
+
+<span class="co"># FOR the TXT file</span>
+Dataset &lt;-<span class="st"> </span><span class="kw">read.delim</span>( <span class="dt">file=</span><span class="st">&quot; C:/Luke/Data/Dataset.txt&quot;</span>, <span class="dt">headers=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</code></pre></div>
+<p><br/></p>
+<p>In these functions the <em>file</em> variable provides the address to where the data is stored on your computer. This has to be exactly correct for the file to be read so check all the spelling and capitalisation. If you copy and paste the address in from a file explorer make sure the slashes are in the correct direction. The <em>headers</em> variable is a true or false option depending on whether your data has headings, I have set it to true in the example as this is normally the case. Finally, <em>sep</em> feeds in the delimiter of the file which is presented in quotation marks.</p>
+<p>It should be noted that these functions have default values for the variables. For both <em>read.csv</em> and <em>read.delim</em> the headers are set to true and the delimiters are set to commas and tabs respectively. This means that if you have set up your data in the way described in this article then you need only specify the file path in the function, however, I think quickly demonstrating the basics of the function is useful knowledge for future use.</p>
+<p><strong>3)</strong> This is a hybrid method which uses another function within the read functions to open a file explorer to locate the file. This method can be useful when you are switching between machines where the exact file path to the data will change. As I use cloud storage between a home and work computer this is the method I use most frequently.</p>
+<p><br/></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For CSV</span>
+<span class="kw">read.csv</span>(<span class="dt">file=</span><span class="kw">file.choose</span>(),  <span class="dt">header =</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)  <span class="co"># dataset.csv</span>
+
+<span class="co"># For text</span>
+<span class="kw">read.delim</span>(<span class="dt">file=</span><span class="kw">file.choose</span>(), <span class="dt">header=</span><span class="ot">TRUE</span>, sep<span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>) <span class="co"># dataset.txt</span></code></pre></div>
+<p><br/></p>
+<p>The read functions here are exactly the same as previously only that <em>file.choose()</em> opens a file explorer and will input the file path of the selected file. I have found through experience it is useful to comment the name of the file for which you are searching next to the read functions, especially if you are working on a number of scripts at any one time.</p>
+<p><br/></p>
+</div>
+<div id="finding-your-own-route" class="section level2">
+<h2>Finding your own route</h2>
+<p><br/></p>
+<p>So that is essentially it. There is no definite best way for getting data into R, I recommend simply finding the method that can be implemented the most reliably. Ultimately it’s not that important, people don’t look at The Starry Night and ask where Van Gogh got his paint from. There is though, undoubtedly some scope for making the process faster which I’ll leave to the reader to investigate at their leisure. If data input from a source other than a excel sheet is required then <a href= "https://www.datacamp.com/community/tutorials/r-data-import-tutorial#gs.mPSeGAc">this tutorial</a> will be found useful. Hopefully though the reader will now have their data in R and will have sufficient knowledge to happily forget that this was ever an issue.</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

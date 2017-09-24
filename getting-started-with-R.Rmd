@@ -7,9 +7,15 @@ output:
     toc: true
     toc_float: true
 ---
+
 <br/>
 
-##Introduction
+
+<img src="images/running.png" width="1000px">
+
+<br/>
+
+##Introduction 
 
 <br/>
 
